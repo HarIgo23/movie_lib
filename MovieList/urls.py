@@ -18,8 +18,12 @@ from django.urls import path
 from .views import (
     home_page
 )
+from movies.views import (
+    movies_list_view
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page)
+    path('', home_page),
+    path('movie/', movies_list_view, name='movie-list'),
 ]
