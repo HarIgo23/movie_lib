@@ -34,4 +34,5 @@ urlpatterns = [
     url(r'^movie/(?P<movie_pk>[0-9]+)$', movie_review_page, name='movie-review'),
     url(r'^user/(?P<user_pk>[0-9]+)$', user_review_page, name='user-review'),
     path('api/', include('movies.urls')),
+    path('api/', include('movie_reviews.urls')),
 ]
