@@ -16,3 +16,7 @@ def home_page(request):
         data = paginator.page(paginator.num_pages)
     context = {'users': data}
     return render(request, "home.html", context)
+
+
+def api_page(request):
+    return render(request, 'api.html')
