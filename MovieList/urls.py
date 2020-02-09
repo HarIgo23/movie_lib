@@ -44,5 +44,6 @@ urlpatterns = [
     path('api/', include('movie_reviews.urls')),
     path('login/', login_page, name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('profile', profile_page, name='profile')
+    path('profile', profile_page, name='profile'),
+    path('social-auth/', include('social_django.urls', namespace="social")),
 ]
