@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def home_page(request):
-    users = User.objects.all()
+    users = User.objects.all().order_by('username')
     paginator = Paginator(users, 10)
 
     page = request.GET.get('page')
@@ -14,7 +14,5 @@ def home_page(request):
         data = paginator.page(1)
     except EmptyPage:
         data = paginator.page(paginator.num_pages)
-    next_page = data.next_page_number() if data.has_next() else 1
-    previous_page = data.previous_page_number() if data.has_previous() else 1
-    context = {'users': data, 'next_page': next_page, 'previous_page': previous_page}
+    context = {'users': data}
     return render(request, "home.html", context)
