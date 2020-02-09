@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import Movie
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-def movies_list_view(request):
-    movies = Movie.objects.all()
-    paginator = Paginator(movies, 10)
+def home_page(request):
+    users = User.objects.all().order_by('username')
+    paginator = Paginator(users, 10)
 
     page = request.GET.get('page')
     try:
@@ -14,5 +14,5 @@ def movies_list_view(request):
         data = paginator.page(1)
     except EmptyPage:
         data = paginator.page(paginator.num_pages)
-    context = {'movies': data}
-    return render(request, "movies/movies_list.html", context)
+    context = {'users': data}
+    return render(request, "home.html", context)

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block head_title %}Home{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <h1 class="col-12 text-center">{{ movie.name }}</h1>
+        <h4 class="col-12 text-center">{{ movie.producer }}</h4>
+        <p class="col-10 mx-auto">{{ movie.description }}</p>
+        <h2 class="text-center col-12">Review List</h2>
+        <ul class="list-group col-12">
+            {% for review in reviews %}
+                <li class="list-group-item col-8 mx-auto">
+                    <a href="{% url "user-review" user_pk=review.user.pk %}"><h1>User: {{ review.user.username }}</h1></a>
+                    <h4>Score: {{ review.score }}</h4>
+                    {% if not review.text is None %}
+                        <p>Text review:
+                            {{ review.text }}
+                        </p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            {% if reviews|length == 0 %}
+                <p class="col-10 mx-auto text-center">Not reviews. You can be the first.</p>
+            {% endif %}
+        </ul>
+
+        {% include "paginator.html" with obj=reviews %}
+    </div>
+
+{% endblock %}

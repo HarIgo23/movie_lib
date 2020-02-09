@@ -15,7 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from .views import (
+    home_page
+)
+from movies.views import (
+    movies_list_view
+)
+from movie_reviews.views import (
+    movie_review_page,
+    user_review_page,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home_page),
+    path('movie/', movies_list_view, name='movie-list'),
+    url(r'^movie/(?P<movie_pk>[0-9]+)$', movie_review_page, name='movie-review'),
+    url(r'^user/(?P<user_pk>[0-9]+)$', user_review_page, name='user-review')
 ]
