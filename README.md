@@ -39,3 +39,7 @@
 5) python manage.py createsuperuser
 6) python manage.py runserver
 
+## В настройках установить ключи приложения Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = 'key'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'app secret'
+
