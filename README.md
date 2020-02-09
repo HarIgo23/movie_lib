@@ -43,3 +43,11 @@
 SOCIAL_AUTH_FACEBOOK_KEY = 'key'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'app secret'
 
+## deploy
+1) sudo apt-get install nginx
+2) sudo /etc/init.d/nginx start
+3) change path in MovieList_nginx.conf
+4) sudo ln -s ~/path/to/your/mysite/MovieList_nginx.conf /etc/nginx/sites-enabled/
+5) python manage.py collectstatic
+6) uwsgi --socket MovieList.sock --module MovieList.wsgi --chmod-socket=666
+
