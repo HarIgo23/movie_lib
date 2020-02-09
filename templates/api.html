@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block head_title %}API{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <h2 class="text-center col-12">API List</h2>
+
+        <ul class="list-group col-12">
+            <li class="list-group-item col-8 mx-auto">GET api/movies/ - получение списка всех фильмов</li>
+            <li class="list-group-item col-8 mx-auto">POST api/movies/ - создание фильма</li>
+            <li class="list-group-item col-8 mx-auto">GET api/movies/int:pk - получение фильма по pk</li>
+            <li class="list-group-item col-8 mx-auto">PUT api/movies/int:pk - изменение фильма по pk</li>
+            <li class="list-group-item col-8 mx-auto">DELETE api/movies/int:pk - удаление фильма по pk</li>
+            <li class="list-group-item col-8 mx-auto">GET api/reviews/ - получение списка всех отзывов</li>
+            <li class="list-group-item col-8 mx-auto">POST api/reviews/ - получение списка всех фильмов</li>
+            <li class="list-group-item col-8 mx-auto">GET api/reviews/int:pk - получение отзыва по pk</li>
+            <li class="list-group-item col-8 mx-auto">PUT api/reviews/int:pk - изменение отзыва по pk</li>
+            <li class="list-group-item col-8 mx-auto">DELETE api/reviews/int:pk - удаление отзыва по pk</li>
+            <li class="list-group-item col-8 mx-auto">GET api/reviews/user/int:pk - получение списка всех отзывов пользователя</li>
+            <li class="list-group-item col-8 mx-auto">GET api/reviews/movie/int:pk - получение списка всех отзывов на фильм</li>
+        </ul>
+
+        {% include 'paginator.html' with obj=users %}
+    </div>
+
+{% endblock %}

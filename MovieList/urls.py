@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from .views import (
-    home_page
+    home_page,
+    api_page,
 )
 from movies.views import (
     movies_list_view
@@ -33,6 +34,7 @@ urlpatterns = [
     path('movie/', movies_list_view, name='movie-list'),
     url(r'^movie/(?P<movie_pk>[0-9]+)$', movie_review_page, name='movie-review'),
     url(r'^user/(?P<user_pk>[0-9]+)$', user_review_page, name='user-review'),
+    path('api/', api_page, name='api-list'),
     path('api/', include('movies.urls')),
     path('api/', include('movie_reviews.urls')),
 ]
