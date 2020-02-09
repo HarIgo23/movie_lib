@@ -19,7 +19,7 @@
 для текущего пользователя. При нажатии на название фильма - переход на форму редактирования этого фильма
 
 ## Фичи:
-+ [ ] Клиент на Django
++ [x] Клиент на Django
 + [ ] API используя DRF
 + [ ] Авторизация через сторонние сервисы.(Facebook, Linkedin). https://webdevblog.ru/django-autentifikaciya-s-facebook-instagram-i-linkedin/
 + [ ] На деплой - uWSGI + nginx. https://webdevblog.ru/razvertyvanie-prilozheniya-na-django-s-uwsgi-i-nginx-v-proizvodstvennoj-srede/ 
