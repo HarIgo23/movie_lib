@@ -1,0 +1,20 @@
+<form {% if url is not None %} action="{{ url }}" {% endif %} method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="form-group {% if form.movie.errors is not None %}has-error{% endif %}">
+        {{ form.movie.label_tag }}
+        {{ form.movie }}
+        {% if form.movie.errors is not None %}<span class="help-block">{{ form.movie.errors }}</span>{% endif %}
+    </div>
+    <div class="form-group {% if form.score.errors is not None %}has-error{% endif %}">
+        {{ form.score.label_tag }}
+        {{ form.score }}
+        {% if form.score.errors is not None %}<span class="help-block">{{ form.score.errors }}</span>{% endif %}
+    </div>
+    <div class="form-group {% if form.text.errors is not None %}has-error{% endif %}">
+        {{ form.text.label_tag }}
+        {{ form.text }}
+        {% if form.text.errors is not None %}<span class="help-block">{{ form.text.errors }}</span>{% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

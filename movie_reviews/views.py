@@ -1,15 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.generics import get_object_or_404
 from rest_framework.decorators import api_view
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+from django.contrib import messages
 
 from movies.models import Movie
 from .models import MovieReview
 from django.contrib.auth.models import User
 from .serializers import MovieReviewSerializer
+from .forms import MovieReviewModelForm
 
 
 def user_review_page(request, user_pk):
@@ -103,3 +107,27 @@ def movie_review_api(request, pk):
     reviews = movie.moviereview_set.all()
     serializer = MovieReviewSerializer(reviews, many=True)
     return Response({'movies_reviews': serializer.data})
+
+
+@login_required
+def delete_review_page(request, pk):
+    movie_review = get_object_or_404(MovieReview.objects.all(), pk=pk)
+    if movie_review.user == request.user:
+        movie_review.delete()
+        return redirect('profile')
+    else:
+        return HttpResponseForbidden()
+
+
+@login_required
+def edit_review_page(request, pk):
+    movie_review = get_object_or_404(MovieReview.objects.all(), pk=pk)
+    if movie_review.user == request.user:
+        form = MovieReviewModelForm(request.POST or None, instance=movie_review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Review updated successful")
+        context = {'form_review': form}
+        return render(request, 'movie_reviews/edit_review.html', context)
+    else:
+        return HttpResponseForbidden()
