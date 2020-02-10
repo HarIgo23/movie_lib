@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -103,3 +103,8 @@ def movie_review_api(request, pk):
     reviews = movie.moviereview_set.all()
     serializer = MovieReviewSerializer(reviews, many=True)
     return Response({'movies_reviews': serializer.data})
+
+def delete_review_page(request, pk):
+    movie_review = get_object_or_404(MovieReview.objects.all(), pk=pk)
+    movie_review.delete()
+    return redirect('profile')

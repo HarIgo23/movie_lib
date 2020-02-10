@@ -23,6 +23,7 @@
                                 {{ review.text }}
                             </p>
                         {% endif %}
+                        <a href="{% url 'review-delete' pk=review.pk %}">Delete</a>
                     </li>
                 {% endfor %}
             </ul>

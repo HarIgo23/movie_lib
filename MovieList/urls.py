@@ -28,6 +28,7 @@ from movies.views import (
 from movie_reviews.views import (
     movie_review_page,
     user_review_page,
+    delete_review_page,
 )
 from social_auth.views import (
     login_page,
@@ -48,5 +49,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('profile', profile_page, name='profile'),
     path('social-auth/', include('social_django.urls', namespace="social")),
-    path('register/', register_page, name='register')
+    path('register/', register_page, name='register'),
+    path('delete-review/<int:pk>', delete_review_page, name='review-delete')
 ]
