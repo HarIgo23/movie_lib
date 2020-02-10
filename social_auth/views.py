@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from movie_reviews.forms import MovieReviewModelForm
-from movie_reviews.models import MovieReview
 
 
 def login_page(request):
