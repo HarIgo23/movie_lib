@@ -20,15 +20,15 @@
 
 ## Фичи:
 + [x] Клиент на Django
-+ [x] API используя DRF
-+ [ ] Авторизация через сторонние сервисы.(Facebook, Linkedin). https://webdevblog.ru/django-autentifikaciya-s-facebook-instagram-i-linkedin/
-+ [ ] На деплой - uWSGI + nginx. https://webdevblog.ru/razvertyvanie-prilozheniya-na-django-s-uwsgi-i-nginx-v-proizvodstvennoj-srede/ 
++ [x] API используя DRF. Описание API можно посмотреть на вкладке API сайта
++ [x] Авторизация через сторонние сервисы.(Facebook, Linkedin). https://webdevblog.ru/django-autentifikaciya-s-facebook-instagram-i-linkedin/
++ [x] Отдельная ветка deploy. На деплой - uWSGI + nginx. https://webdevblog.ru/razvertyvanie-prilozheniya-na-django-s-uwsgi-i-nginx-v-proizvodstvennoj-srede/ 
 
 ## Опционально:
 + [ ] Клиент-серверное приложение с использованием React
 + [ ] Покрытие тестами.
 + [x] Простенький Readme.md файл. 
-+ [ ] Создать fixtures для приложений.
++ [x] Создать fixtures для приложений.
 + [ ] Прикрутить Docker
 
 ## Локальная установка
@@ -40,6 +40,6 @@
 6) python manage.py runserver
 
 ## В настройках установить ключи приложения Facebook
-SOCIAL_AUTH_FACEBOOK_KEY = 'key'
+SOCIAL_AUTH_FACEBOOK_KEY = 'key'  
 SOCIAL_AUTH_FACEBOOK_SECRET = 'app secret'
 
