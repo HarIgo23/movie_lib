@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" class="d-flex justify-content-center">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-center">Join Today</legend>
+                {{ form.as_p }}
+                <div class="d-flex flex-column">
+                    <button type="submit" class="btn btn-outline-info">Sign Up</button>
+                </div>
+                <p><small class="text-muted ">
+                    Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+                </small></p>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}}
