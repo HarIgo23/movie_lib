@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LoginView
 from .views import (
     home_page,
     api_page,
@@ -31,6 +32,7 @@ from movie_reviews.views import (
 from social_auth.views import (
     login_page,
     profile_page,
+    register_page,
 )
 
 urlpatterns = [
@@ -42,8 +44,9 @@ urlpatterns = [
     path('api/', api_page, name='api-list'),
     path('api/', include('movies.urls')),
     path('api/', include('movie_reviews.urls')),
-    path('login/', login_page, name='login'),
+    path('login/', LoginView.as_view(template_name="social_auth/login.html"), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('profile', profile_page, name='profile'),
     path('social-auth/', include('social_django.urls', namespace="social")),
+    path('register/', register_page, name='register')
 ]
