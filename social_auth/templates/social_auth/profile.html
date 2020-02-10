@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block head_title %}Profile{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Profile</h1>
+    <div class="card p-5">
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <h4 class="text-center"> Welcome {{ user.username }} </h4>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
